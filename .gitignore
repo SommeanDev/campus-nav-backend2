@@ -1,0 +1,129 @@
+# =============== #
+# Unity generated #
+# =============== #
+
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+
+# Avoid ignoring important asset meta files in project
+# Hidden Meta Files
+# * DO NOT IGNORE *.meta files as they are essential in Unity projects *
+# Unity builds the Library folder on demand but meta files should remain for source control
+
+# ===================== #
+# Unity / Firebase Files #
+# ===================== #
+
+# Firebase configuration files
+google-services.json
+firebase-debug.log
+firebase-debug.apk
+
+# Generated Firebase files (iOS-specific, but won't hurt to include for cross-platform projects)
+ios/Pods/
+ios/Podfile.lock
+
+# ===================== #
+# Android Files #
+# ===================== #
+*.apk
+*.aab
+*.unitypackage
+
+# Gradle cache (Android build files)
+.gradle/
+.gradle_cache/
+
+# Android Studio specific files (if using Android Studio with Unity)
+.idea/
+*.iml
+local.properties
+
+# Android build artifacts
+build/
+app/build/
+app/.externalNativeBuild/
+
+# Android native files
+app/src/main/obj/
+app/src/main/libs/
+
+# ===================== #
+# Unity Build Files #
+# ===================== #
+# This includes intermediate files generated when building a project
+Assets/StreamingAssets/*
+Assets/Plugins/Android/libs/*.aar
+Assets/Plugins/Android/libs/*.so
+Assets/Plugins/Android/Firebase/*
+Assets/Firebase/*
+
+# ================== #
+# Unity User Settings #
+# ================== #
+
+# Personal settings
+UserSettings/
+
+# Mono/Visual Studio #
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+.vscode/settings.json
+
+# Rider files
+.idea/
+.idea/.idea/
+.idea/workspace.xml
+.idea/.rider/
+
+# ================== #
+# Unity Cache Files #
+# ================== #
+# These are large files and don't need to be tracked
+MemoryCaptures/
+
+# ================= #
+# Scene Files #
+# ================= #
+# If you have multiple scenes, make sure not to ignore the Scene `.unity` files
+*.unity
+*.unity.meta
+
+# ============ #
+# Asset Files #
+# ============ #
+# You can ignore asset store and cache files, but keep .meta files
+Assets/AssetStoreTools/*
+Assets/StreamingAssets/*
+Assets/Resources/*.json
+
+# ======================== #
+# Firebase Crashlytics #
+# ======================== #
+android/crashlytics/
+google-services-desktop.json
+
+# ======================== #
+# Other # 
+# ======================== #
+.DS_Store
+*.log
+*.bak
+*.swp
+*.lock

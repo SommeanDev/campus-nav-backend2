@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/TeacherListStyles.uss?fileID=7433441132597879392&amp;guid=53cf92e585364cf4f9aa396aa4997506&amp;type=3#TeacherListStyles" />
+    <ui:ListView name="TeachersList" fixed-item-height="25" style="font-size: 30px; top: 25%; left: 10%; width: 40px; overflow: hidden; height: 70%; max-height: 325px;" />
+</ui:UXML>
