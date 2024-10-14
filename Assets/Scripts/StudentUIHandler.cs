@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Firebase;
 using Firebase.Database;
@@ -27,11 +28,10 @@ public class StudentUIHandler : MonoBehaviour
 
     public void SaveSelectedTeachers(List<string> selectedTeachers)
     {
+        _observedTeachersList = selectedTeachers; 
+        Debug.Log(_observedTeachersList.ToArray());
         RemovePreviousListeners();
         DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("student").Child(PlayerPrefs.GetString("UserId"));
-
-        _observedTeachersList = selectedTeachers; 
-        
         UpdateStudentSelectedTeachers(selectedTeachers, reference);
         SubscribeToTeacherStatusUpdates(selectedTeachers);
     }
@@ -86,6 +86,7 @@ public class StudentUIHandler : MonoBehaviour
 
     private void HandleTeacherStatusChange(string teacherId, string teacherName, string currentStatus)
     {
+        Debug.Log("Running HandleTeacherStatusChange function");
         string previousStatus = _previousTeacherStatus.ContainsKey(teacherId) ? _previousTeacherStatus[teacherId] : null;
 
         if (currentStatus != previousStatus)
@@ -112,9 +113,10 @@ public class StudentUIHandler : MonoBehaviour
 
     private void UpdateStudentSelectedTeachers(List<string> selectedTeachers, DatabaseReference reference)
     {
+        Debug.Log("Updating student selected teachers");
         Dictionary<string, object> updates = new Dictionary<string, object>();
         // Add the selectedTeachers list to the updates dictionary
-        updates["selectedTeachers"] = selectedTeachers;
+        updates["selectedTeachers"] = selectedTeachers.ToDictionary(item => selectedTeachers.IndexOf(item), item => item);
         
         reference.UpdateChildrenAsync(updates).ContinueWith(task => 
         {
@@ -146,6 +148,7 @@ public class StudentUIHandler : MonoBehaviour
 
     private void RemovePreviousListeners()
     {
+        Debug.Log("Running RemovePreviousListeners function");
         foreach (var teacherId in _observedTeachersList)
         {
             // Remove old listeners to avoid duplicated events

@@ -6,6 +6,7 @@ using UnityEngine;
 using Firebase.Database;
 using Firebase.Extensions;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DatabaseManager : MonoBehaviour
 {
@@ -112,11 +113,11 @@ public class DatabaseManager : MonoBehaviour
     
     private void ListenForDatabaseChanges()
     {
-        _reference.Child("teacher").Child(_userID).ValueChanged += HandleValueChanged;
-        _reference.Child("student").Child(_userID).ValueChanged += HandleValueChanged;
+        _reference.Child("teacher").Child(_userID).ValueChanged += HandleTeacherValueChanged;
+        _reference.Child("student").Child(_userID).ValueChanged += HandleStudentValueChanged;
     }
     
-    private void HandleValueChanged(object sender, ValueChangedEventArgs e)
+    private void HandleTeacherValueChanged(object sender, ValueChangedEventArgs e)
     {
         if (e.DatabaseError != null)
         {
@@ -128,12 +129,21 @@ public class DatabaseManager : MonoBehaviour
         {
             // Data has been changed, trigger a notification
             Debug.Log("Data changed: " + e.Snapshot.GetRawJsonValue());
+        }
+    }
+    
+    private void HandleStudentValueChanged(object sender, ValueChangedEventArgs e)
+    {
+        if (e.DatabaseError != null)
+        {
+            Debug.LogError("Database error: " + e.DatabaseError.Message);
+            return;
+        }
 
-            // Trigger a notification
-            /*if (_messageHandler != null)
-            {
-                _messageHandler.SendNotification("Data Updated", "Your data has been updated in the database.");
-            }*/
+        if (e.Snapshot != null && e.Snapshot.Exists)
+        {
+            // Data has been changed, trigger a notification
+            Debug.Log("Data changed: " + e.Snapshot.GetRawJsonValue());
         }
     }
 
